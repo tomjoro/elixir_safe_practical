@@ -1,13 +1,15 @@
 defmodule Loop2 do
   def init() do
     IO.puts "Loop2 starting"
-    loop()
+    loop([])
   end
 
-  def loop() do
+  def loop(a) do
     receive do
       string -> IO.puts string
     end
-    loop()
+    a = [3 | a]
+    value = loop(a)
+    IO.puts value
   end
 end
